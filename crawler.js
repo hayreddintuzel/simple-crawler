@@ -20,6 +20,7 @@ con.connect(function(err) {
  *        V  A   R  I  A  B  L  E  S
  * 
  ********************************************/
+var url = "https://www.doktortakvimi.com/";
 //CHANGE CITY FROM URL//
 var city="istanbul";
 //CHANGE FIELD FROM URL//
@@ -29,7 +30,7 @@ var id = 0;
 /*
 *********************************************
 */
-var pagesToVisit = "https://www.doktortakvimi.com/" + field + "/" + city + "/";
+var pagesToVisit = url  + field + "/" + city + "/";
 
 for(var i=0; i<2; i++)
 {
@@ -40,10 +41,10 @@ for(var i=0; i<2; i++)
       console.log("Error: " + error);
     }
     if(response.statusCode === 200) {
-      // Parse the document body
       var $ = cheerio.load(body);
-      var bodyText = $('html > body').text();
-      var doctors = [];
+      /*
+      * HTML PATTERN
+      */
       let doctorsArray = $("span[itemprop='name']").map(function(){
         id++;
         if($(this).text().toString().indexOf("Dr.") !== -1)
