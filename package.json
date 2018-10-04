@@ -8,6 +8,7 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "excel4node": "^1.6.0",
+    "mysql": "^2.16.0",
     "request": "^2.65.0",
     "request-promise": "^4.2.2",
     "url-parse": "^1.0.5"
