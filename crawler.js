@@ -15,11 +15,20 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
-
+/********************************************
+ * 
+ *        V  A   R  I  A  B  L  E  S
+ * 
+ ********************************************/
+//CHANGE CITY FROM URL//
 var city="istanbul";
+//CHANGE FIELD FROM URL//
 var field = "kadin-hastaliklari-ve-dogum";
+//LOOK FOR THE LAST INDEX OF DATABASE
 var id = 0;
-
+/*
+*********************************************
+*/
 var pagesToVisit = "https://www.doktortakvimi.com/" + field + "/" + city + "/";
 
 for(var i=0; i<2; i++)
