@@ -20,6 +20,7 @@ con.connect(function(err) {
  *        V  A   R  I  A  B  L  E  S
  * 
  ********************************************/
+//URL//
 var url = "https://www.doktortakvimi.com/";
 //CHANGE CITY FROM URL//
 var city="istanbul";
@@ -27,12 +28,14 @@ var city="istanbul";
 var field = "kadin-hastaliklari-ve-dogum";
 //LOOK FOR THE LAST INDEX OF DATABASE
 var id = 0;
+//PAGE COUNT//
+var page = 2;
 /*
 *********************************************
 */
 var pagesToVisit = url  + field + "/" + city + "/";
 
-for(var i=0; i<2; i++)
+for(var i=0; i<page; i++)
 {
   let visitedpage = pagesToVisit + i;
   console.log("Visiting page " + visitedpage);
@@ -56,13 +59,12 @@ for(var i=0; i<2; i++)
             console.log(err);
           } else 
           {
-            console.log("1 record inserted");
           }
           });
           return $(this).text();
         }
      }).get();
-
+     console.log(id + " Doctor imported!");
      /*
       var j=1;
       doctorsArray.forEach(element => {
