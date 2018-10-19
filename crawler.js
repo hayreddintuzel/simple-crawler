@@ -52,7 +52,10 @@ for(var i=0; i<page; i++)
         id++;
         if($(this).text().toString().indexOf("Dr.") !== -1)
         {
-          var sql = "INSERT INTO doctors (id,name, city, field) VALUES ('" + id + "','" + $(this).text().toString() + "','" +  city + "','" + field + "')";
+          var name = $(this).text().toString();
+          var email = id + "@uzmantavsiye.com";
+          var password = "12345678"
+          var sql = "INSERT INTO doctors (user_login,user_pass, first_name, last_name, user_nicename, user_email, user_registered, adress, latitude, longitude,directory) VALUES ('" + email +"','" + password +"','"+name+"','','" + name + "','"+email+"','','','','','"+field+"')";
           con.query(sql, function (err, result) {
           if (err)
           {
