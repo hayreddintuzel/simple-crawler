@@ -20,16 +20,17 @@ con.connect(function(err) {
  *        V  A   R  I  A  B  L  E  S
  * 
  ********************************************/
+//  node crawler.js
 //URL//
-var url = "https://www.doktortakvimi.com/";
+var url = "https://www.doktortakvimi.com/";  //DEĞİŞTİRME
 //CHANGE CITY FROM URL//
-var city="istanbul";
+var city="istanbul";        //şehri gir
 //CHANGE FIELD FROM URL//
-var field = "kadin-hastaliklari-ve-dogum";
+var field = "pedagoji"; //Alanı gir
 //LOOK FOR THE LAST INDEX OF DATABASE
 var id = 0;
 //PAGE COUNT//
-var page = 2;
+var page = 7;
 /*
 *********************************************
 */
@@ -50,12 +51,15 @@ for(var i=0; i<page; i++)
       */
       let doctorsArray = $("span[itemprop='name']").map(function(){
         id++;
-        if($(this).text().toString().indexOf("Dr.") !== -1)
+        if($(this).text().toString().indexOf("Dr.") !== -1 || $(this).text().toString().indexOf("Psk.") !== -1)  //  || $(this).text().toString().indexOf("Psk.") !== -1
         {
           var name = $(this).text().toString();
+          name = name.trimLeft();
+          name = name.trimRight();
           var email = id + "@uzmantavsiye.com";
           var password = "12345678"
-          var sql = "INSERT INTO doctors (user_login,user_pass, first_name, last_name, user_nicename, user_email, user_registered, adress, latitude, longitude,directory) VALUES ('" + email +"','" + password +"','"+name+"','','" + name + "','"+email+"','','','','','"+field+"')";
+          var sql = "INSERT INTO doctors (user_login, user_pass, first_name, last_name, user_nicename, user_email, user_registered, adress, latitude, longitude,directory) VALUES ('" + email +"','" + password +"','"+name+"','','" + name + "','"+email+"','','','','','"+field+"')";
+
           con.query(sql, function (err, result) {
           if (err)
           {
